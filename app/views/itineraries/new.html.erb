@@ -1,0 +1,15 @@
+<h1>Create your Itinerary</h1>
+<%= form_for @itinerary do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <%= f.fields_for :location, @itinerary.locations do |builder| %>
+      <%= render 'partials/location', :f => builder %>
+  <% end %>
+
+  <div class="action">
+    <%= f.submit :submit %>
+  </div>
+<% end %>
