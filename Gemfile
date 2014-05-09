@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'simple_form'
 
+gem 'foundation-rails'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'spring'
