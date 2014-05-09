@@ -1,7 +1,11 @@
 class Location < ActiveRecord::Base
-  belongs_to :itinerary,
-  inverse_of: :locations
+  has_many :itinerary,
+    through: :plans,
+    inverse_of: :locations
+  has_many :plans
+  has_many :plans,
+    inverse_of: :location
 
-  validates :address, presence: true
-  validates :name, presence: true
+  validates_presence_of :name
+  validates_presence_of :address
 end

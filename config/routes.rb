@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
   root 'itineraries#index'
-  resources :itineraries, only: [:index, :new] do
-    resources :locations, only: [:new]
-  end
+  resources :itineraries, only: [:index, :show, :new, :create]
 end

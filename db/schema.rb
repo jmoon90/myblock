@@ -11,15 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508012508) do
+ActiveRecord::Schema.define(version: 20140509014749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "itineraries", force: true do |t|
-    t.text     "title",       null: false
+    t.text     "title",      null: false
     t.integer  "user_id"
-    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,5 +29,13 @@ ActiveRecord::Schema.define(version: 20140508012508) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "plans", force: true do |t|
+    t.integer "itinerary_id", null: false
+    t.integer "location_id",  null: false
+  end
+
+  add_index "plans", ["itinerary_id"], name: "index_plans_on_itinerary_id", using: :btree
+  add_index "plans", ["location_id"], name: "index_plans_on_location_id", using: :btree
 
 end

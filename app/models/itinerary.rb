@@ -1,8 +1,12 @@
 class Itinerary < ActiveRecord::Base
   has_many :locations,
-  inverse_of: :itinerary
+    through: :plans,
+    inverse_of: :itinerary
+  has_many :plans
+  has_many :plans,
+    inverse_of: :itinerary
 
-  validates :title, presence: true
+  validates_presence_of :title
 
-  accepts_nested_attributes_for :locations, :allow_destroy => true
+  accepts_nested_attributes_for :locations
 end
